@@ -1,0 +1,16 @@
+diff --git a/node_modules/slate-react/dist/index.es.js b/node_modules/slate-react/dist/index.es.js
+index 61bce23..e068e83 100644
+--- a/node_modules/slate-react/dist/index.es.js
++++ b/node_modules/slate-react/dist/index.es.js
+@@ -1279,8 +1279,11 @@ const setFragmentData = (dataTransfer, editor) => {
+     // Add the content to a <div> so that we can get its inner HTML.
+     const div = document.createElement('div');
+     div.appendChild(contents);
++    div.setAttribute('hidden', 'true');
++    document.body.appendChild(div);
+     dataTransfer.setData('text/html', div.innerHTML);
+     dataTransfer.setData('text/plain', getPlainText(div));
++    document.body.removeChild(div);
+ };
+ /**
+  * Get a plaintext representation of the content of a node, accounting for block
